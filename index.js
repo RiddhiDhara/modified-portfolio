@@ -1,0 +1,598 @@
+
+
+const eye = document.querySelector(".eye");
+const container = document.querySelector(".container");
+const socialBtn = document.querySelector(".socialBtn");
+const socialContainer = document.querySelector(".socialContainer");
+const navBtns = document.querySelectorAll(".navBtn");
+const wrapper = document.querySelector(".wrapper");
+
+// function to toggle eye
+function toggleEye() {
+  if (!eye.classList.contains("active")) {
+    eye.classList.add("active");
+    container.classList.remove("close");
+    container.classList.add("open");
+    eye.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+  } else {
+    eye.classList.remove("active");
+    container.classList.remove("open");
+    container.classList.add("close");
+    eye.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+  }
+}
+
+// function to toggle socials
+function toggleSocial() {
+  if (!socialBtn.classList.contains("active")) {
+    socialBtn.classList.add("active");
+    socialContainer.classList.remove("close");
+    socialContainer.classList.add("open");
+  } else {
+    socialBtn.classList.remove("active");
+    socialContainer.classList.remove("open");
+    socialContainer.classList.add("close");
+  }
+}
+
+// Function to update the date and time
+function updateDateTime() {
+  const dateElement = document.querySelector(".date");
+  const timeElement = document.querySelector(".time");
+
+  const now = new Date();
+  const dateOptions = { day: "2-digit", month: "2-digit", year: "numeric" };
+  const formattedDate = now.toLocaleDateString("en-GB", dateOptions);
+
+  const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+  const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
+
+  dateElement.textContent = formattedDate;
+  timeElement.textContent = formattedTime;
+}
+
+setInterval(updateDateTime, 1000);
+updateDateTime();
+
+eye.addEventListener("click", toggleEye);
+socialBtn.addEventListener("click", toggleSocial);
+
+// tab switching function
+
+navBtns.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    // Remove active class from all buttons
+    navBtns.forEach((btn) => btn.classList.remove("selected"));
+    tab.classList.add("selected"); // Set active class to clicked tab
+
+    // Load content dynamically
+    if (tab.classList.contains("home")) {
+      wrapper.innerHTML = `
+            <div id="home" class="homeContainer">
+            <div class="big1">Home</div>
+            <div class="inner">
+                <div class="homeLeft">
+                    <div class="flip-box">Hello</div>
+                    <div class="intro">I am Riddhi Dhara</div>
+                    <div class="role">
+                        <span id="role"></span>
+                    </div>
+                    <div class="descriptHome">
+                        I'm a passionate developer and aspiring Machine Learning Engineer, blending creativity and
+                        technology through gaming, sketching, and AI projects.
+                    </div>
+                </div>
+                <div class="homeRight">
+                    <div class="photo noselect">
+                        <div class="canvas">
+                            <div class="tracker tr-1"></div>
+                            <div class="tracker tr-2"></div>
+                            <div class="tracker tr-3"></div>
+                            <div class="tracker tr-4"></div>
+                            <div class="tracker tr-5"></div>
+                            <div class="tracker tr-6"></div>
+                            <div class="tracker tr-7"></div>
+                            <div class="tracker tr-8"></div>
+                            <div class="tracker tr-9"></div>
+                            <div class="tracker tr-10"></div>
+                            <div class="tracker tr-11"></div>
+                            <div class="tracker tr-12"></div>
+                            <div class="tracker tr-13"></div>
+                            <div class="tracker tr-14"></div>
+                            <div class="tracker tr-15"></div>
+                            <div class="tracker tr-16"></div>
+                            <div class="tracker tr-17"></div>
+                            <div class="tracker tr-18"></div>
+                            <div class="tracker tr-19"></div>
+                            <div class="tracker tr-20"></div>
+                            <div class="tracker tr-21"></div>
+                            <div class="tracker tr-22"></div>
+                            <div class="tracker tr-23"></div>
+                            <div class="tracker tr-24"></div>
+                            <div class="tracker tr-25"></div>
+                            <div id="card">
+                                <div class="myImg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            `;
+
+      // Reinitialize animations
+      startFlipAnimation();
+      startTypingAnimation();
+    }
+    if (tab.classList.contains("about")) {
+      wrapper.innerHTML = `
+          <div id="about" class="aboutContainer">
+            <div class="big2">About</div>
+            <div class="inner">
+                <div class="aboutLeft">
+                    <div class="introduction">
+                        <div class="heading">About me</div>
+                        <div class="subheading">Get to know me!</div>
+                    </div>
+                    <div class="descriptAbout">
+                        I am a Computer Science & Engineering student with a strong interest in AI-ML &
+                        backend development. My passion lies in creating LLMs that can automate more complicated tasks
+                        which are not possible now hence making life smoother and faster. This commitment underscores my
+                        dedication to staying at the forefront of industry trends and delivering innovative solutions.
+                    </div>
+                    <div class="linkedin">
+                        <!-- <a href="https://www.linkedin.com/in/riddhi-dhara-7b1b3b1b3/">
+                            <div class="aboutIcon"><i class="fab fa-linkedin-in"></i></div>
+                        </a> -->
+                        <!-- From Uiverse.io by JaydipPrajapati1910 -->
+                        <a href="www.linkedin.com/in/riddhi-dhara-7b1b3b1b3">
+                            <button class="aboutIcon">
+                                <span><i class="fab fa-linkedin-in"></i></span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="aboutRight">
+                    <div class="techstack">
+                        <div class="techHeading">My Tech-Stack</div>
+                        <div class="techSubHeading">Check out my skills!!</div>
+                    </div>
+                    <div class="skillSection">
+                        <i class="devicon-c-plain colored"></i>
+                        <i class="devicon-cplusplus-plain colored"></i>
+                        <i class="devicon-python-plain colored"></i>
+                        <i class="devicon-javascript-plain colored"></i>
+                        <i class="devicon-html5-plain colored"></i>
+                        <i class="devicon-css3-plain colored"></i>
+                        <i class="devicon-nodejs-plain-wordmark colored"></i>
+                        <i class="devicon-npm-original-wordmark colored"></i>
+                        <i class="devicon-express-original colored"></i>
+                        <i class="devicon-mongodb-plain-wordmark colored"></i>
+                        <i class="devicon-postman-plain colored"></i>
+                        <i class="devicon-anaconda-original colored"></i>
+                        <i class="devicon-git-plain colored"></i>
+                        <i class="devicon-jupyter-plain-wordmark colored"></i>
+                        <i class="devicon-numpy-plain colored"></i>
+                        <i class="devicon-pandas-plain colored"></i>
+                        <i class="devicon-markdown-original colored"></i>
+                        <i class="devicon-mysql-plain-wordmark colored"></i>
+                        <i class="devicon-sqlite-plain colored"></i>
+                        <i class="devicon-qt-original colored"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    if (tab.classList.contains("project")) {
+      wrapper.innerHTML = `
+         <div id="project" class="projectContainer">
+            <div class="big3">Project</div>
+            <div class="inner">
+                <div class="projectLeft">
+                    <div class="projectIntroduction">
+                        <div class="projectHeading">Projects</div>
+                        <div class="projctSubheading">Here's my projects!!</div>
+                    </div>
+                    <div class="projectShow">
+                        <span id="prev"><i class="fa-solid fa-circle-left"></i></span>
+                        <div class="projectSlider">
+                            <div class="slide active" data-tech="python git qt">
+                                <div class="projectTitle">Smart Pad</div>
+                                <div class="projctDesc">Text editor with voice typing, language translation, grammar check and spell check features. It is created to aid users to be precise and fast!!</div>
+                                <div class="projectLink">
+                                    <a class="gitLink" href="https://github.com/RiddhiDhara/smart-pad-model-2" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                    <a class="demoLink" href="https://drive.google.com/file/d/110O5qZGGk49WuLzuRydXUPHP9JfnNHY8/view?usp=sharing" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                            <div class="slide" data-tech="nodejs git npm js">
+                                <div class="projectTitle">Tran - CLI</div>
+                                <div class="projctDesc">A simple and powerful command-line tool for translating text between languages using Google Translate. This is a nodejs CLI using yargs used to translate to 100+ languages!!</div>
+                                <div class="projectLink">
+                                    <a class="gitLink" href="https://github.com/RiddhiDhara/Lang-translate-CLI" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                    <a class="demoLink" href="https://drive.google.com/file/d/1CuoxF6mhCPdz_Ei6TrU0cU2Ht8M2UACb/view?usp=sharing" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                            <div class="slide" data-tech="nodejs js express mongodb npm postman git">
+                                <div class="projectTitle">Hotels</div>
+                                <div class="projctDesc">A backend system of a hotel management app using NodeJs, Express and MongoDB. It add, deletes, updates and fetches data from database!!</div>
+                                <div class="projectLink">
+                                    <a class="gitLink" href="https://github.com/RiddhiDhara/Hotels_-backend-using-node.js" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                    <a class="demoLink" href="https://github.com/RiddhiDhara/Hotels_-backend-using-node.js" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                            <div class="slide" data-tech="html css js mk sqlite git">
+                                <div class="projectTitle">CodeExplained</div>
+                                <div class="projctDesc">It is a structured form app which helps coders explain their codes in chunks and store them on localstorage!!</div>
+                                <div class="projectLink">
+                                    <a class="gitLink" href="https://github.com/RiddhiDhara/CodeExplain" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                    <a class="demoLink" href="https://riddhidhara.github.io/CodeExplain/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                            <div class="slide" data-tech="html css js git sqlite">
+                                <div class="projectTitle">Mom's Recipe</div>
+                                <div class="projctDesc">This is a recipe web application which makes it easier for you to find new recipes and treat yourself with a fine plate!!</div>
+                                <div class="projectLink">
+                                    <a class="gitLink" href="https://github.com/RiddhiDhara/recipe-app" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                    <a class="demoLink" href="https://riddhidhara.github.io/recipe-app/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                            <div class="slide" data-tech="html css js sqlite npm git">
+                                <div class="projectTitle">InPost</div>
+                                <div class="projctDesc">InPost is a hassle-free Post generation web application that automatically handles LinkedIn post generation with just a click of button!!</div>
+                                <div class="projectLink">
+                                    <a class="gitLink" href="https://github.com/RiddhiDhara/InPost" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                    <a class="demoLink" href="https://riddhidhara.github.io/InPost/index.html" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <span id="next"><i class="fa-solid fa-circle-right"></i></span>
+                    </div>
+                </div>
+
+                <div class="projectRight">
+                    <div class="projectstack">
+                        <div class="projectStackheading">Techstack used</div>
+                    </div>
+                    <div class="projectSkills">
+                        <i class="devicon-c-plain colored c"></i>
+                        <i class="devicon-cplusplus-plain colored cpp"></i>
+                        <i class="devicon-python-plain colored python"></i>
+                        <i class="devicon-javascript-plain colored js"></i>
+                        <i class="devicon-html5-plain colored html"></i>
+                        <i class="devicon-css3-plain colored css"></i>
+                        <i class="devicon-nodejs-plain-wordmark colored nodejs"></i>
+                        <i class="devicon-npm-original-wordmark colored npm"></i>
+                        <i class="devicon-express-original colored express"></i>
+                        <i class="devicon-mongodb-plain-wordmark colored mongodb"></i>
+                        <i class="devicon-postman-plain colored postman"></i>
+                        <i class="devicon-anaconda-original colored anaconda"></i>
+                        <i class="devicon-git-plain colored git"></i>
+                        <i class="devicon-jupyter-plain-wordmark colored jupyter"></i>
+                        <i class="devicon-numpy-plain colored numpy"></i>
+                        <i class="devicon-pandas-plain colored pandas"></i>
+                        <i class="devicon-markdown-original colored mk"></i>
+                        <i class="devicon-mysql-plain-wordmark colored mysql"></i>
+                        <i class="devicon-sqlite-plain colored sqlite"></i>
+                        <i class="devicon-qt-original colored qt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+      `;
+    }
+
+    if (tab.classList.contains("contact")) {
+      wrapper.innerHTML = `
+         <div id="contact" class="contactContainer">
+            <div class="big5">Contact</div>
+            <div class="inner">
+                <div class="contactLeft">
+                    <div class="contactIntroduction">
+                        <div class="contactHeading">Contacts</div>
+                        <div class="contactSubheading">Get in touch with me!</div>
+                    </div>
+                    <div class="descriptContact">
+                        Feel free to contact me for any project or collaboration. I'm always open to new ideas and
+                        opportunities. You can also contact me for any queries or suggestions.
+                    </div>
+                    <div class="personalInfo">
+                        <div class="mail">Email :</div>
+                        <div class="mailVal">riddhidhara2003@gmail.com</div>
+                    </div>
+                    <div class="mySocials">
+                        <a class="contactLink" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="contactLink" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="contactLink" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="contactLink" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contactRight">
+                    <div class="messageTitle">Have an idea ?</div>
+                    <div class="messageSubTitle">Message me !!</div>
+                    <div class="contactForm">
+                        <div class="inputContainer">
+                            <label class="nameLabel" for="name">Name : </label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="inputContainer">
+                            <label class="emailLabel" for="email">Email : </label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="inputContainer">
+                            <label class="messageLabel" for="message">Message : </label>
+                            <textarea id="message" placeholder="Enter your message"></textarea>
+                        </div>
+                        <div class="inputContainer">
+                            <button class="contactBtn" onclick="sendTestEmail()" >Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    }
+    if (tab.classList.contains("resume")) {
+      wrapper.innerHTML = `
+         <div id="resume" class="resumeContainer">
+            <div class="big4">Resume</div>
+            <div class="inner">
+                <div class="resumeLeft">
+                    <div class="resumeIntroduction">
+                        <div class="resumeHeading">Resume</div>
+                        <div class="resumeSubheading">Here's my resume!!</div>
+                    </div>
+                    <div class="descriptResume">
+                        Aspiring Machine Learning Engineer with a strong foundation in Computer Science and passion about AI/ML, Python, and backend development. Passionate about solving real-world problems through technology. Experienced in building intelligent applications, data analysis, and backend systems.
+                    </div>
+                </div>
+                <div class="resumeRight">
+                    <div class="myTimeline">
+                        <div class="resumeRightHeading">
+                            <div class="timelineHeading">My Timeline</div>
+                        </div>
+                        <div class="timeline">
+                            <div class="outer">
+                                <div class="card">
+                                    <div class="info">
+                                        <h3 class="title">Army Public School [2009 - 2019]</h3>
+                                        <p>
+                                            My time here strengthened my curiosity, discipline, and problem-solving abilities, shaping my academic journey. 
+                                        </p>
+                                        <p>
+                                            <u>AISSE</u> : 94.8 %
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="info">
+                                        <h3 class="title">Army Public School [2019 - 2021]</h3>
+                                        <p>
+                                            It was here that I honed my analytical thinking and developed a passion for technology. 
+                                        </p>
+                                        <p>
+                                            <u>AISSCE</u> : 93.0 %
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="info">
+                                        <h3 class="title">JIS College of Engineering [2021 - 2025]</h3>
+                                        <p>
+                                            I gained expertise in programming, data structures, and artificial intelligence and evolved into a problem-solver, ready to tackle real-world technological challenges.
+                                        </p>
+                                        <p>
+                                            <u>CGPA</u> : 8.20<br>
+                                            <u>Learnings</u> : backend dev, DSA, ML & data analysis
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="info">
+                                        <h3 class="title">Imperio-Coders Community [2025-present] </h3>
+                                        <p>
+                                            It’s an excellent community [private] for networking, learning from industry professionals, and staying updated with advancements in programming, software development, and AI/ML. 
+                                        </p>
+                                        <p>
+                                            <u>Members</u> : 1500+ and growing!!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="info">
+                                        <h3 class="title">CrazyCodeTech Community [2022-present] </h3>
+                                        <p>
+                                            A dynamic tech community that fosters innovation and collaboration among developers. Being part of this community fuels my passion for coding, encouraging me to explore advanced concepts in software development.
+                                        </p>
+                                        <p>
+                                            <u>Members</u> : 1000+ and growing!!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="info">
+                                        <h3 class="title">Capgemini [2025-present] </h3>
+                                        <p>
+                                            A global technology leader that nurtures growth, innovation, and collaboration. Being part of Capgemini kickstarted my professional journey, strengthening my technical expertise while fostering adaptability in real-world projects.
+                                        </p>
+                                        <p>
+                                            <u>Role</u> : Software-Engineer / Analyst<br>
+                                            <u>Location</u> : Pune
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      `
+    }
+
+    if (tab.classList.contains("docs")) {
+        wrapper.innerHTML = `
+        <div id="docs" class="docsContainer">
+            <div class="big6">Docs</div>
+            <div class="inner">
+                <div class="allCards">
+                    <div class="doc-card">
+                        <div class="doc-card-image1"></div>
+                        <p class="doc-card-title">Microsoft</p>
+                        <p class="doc-card-body">
+                            Cyber Security course by TATA Strive and Microsoft.
+                        </p>
+                        <span class="doc-view"><a href="https://drive.google.com/file/d/1QGKqJrVZb-2vi4IIrF85Ue7FBcMXn-ur/view?usp=sharing"><i class="fa-brands fa-google-drive"></i></a></span>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-card-image2"></div>
+                        <p class="doc-card-title">Google Cloud</p>
+                        <p class="doc-card-body">
+                            Introduction to AI and Machine Learning on Google Cloud 
+                        </p>
+                        <span class="doc-view"><a href="https://drive.google.com/file/d/1o7n555EziPpddjbqEpE04eaoT_m4p3u6/view?usp=sharing"><i class="fa-brands fa-google-drive"></i></a></span>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-card-image3"></div>
+                        <p class="doc-card-title">Coursera</p>
+                        <p class="doc-card-body">
+                            Numerical Methods for Engineers
+                            by The Hong Kong University of Science and
+                            Technology
+                        </p>
+                        <span class="doc-view"><a href="https://drive.google.com/file/d/17wh8hzuInjJ6U7JKwdiKupQbNjltrlPR/view?usp=sharing"><i class="fa-brands fa-google-drive"></i></a></span>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-card-image4"></div>
+                        <p class="doc-card-title">Coursera</p>
+                        <p class="doc-card-body">
+                            Algorithms for Searching, Sorting, and Indexing 
+                            by University of Colorado Boulder
+                        </p>
+                        <span class="doc-view"><a href="https://drive.google.com/file/d/15h7SLAl_T8LwtK7-5mgHgUEYVo3mofNV/view?usp=sharing"><i class="fa-brands fa-google-drive"></i></a></span>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-card-image5"></div>
+                        <p class="doc-card-title">Udemy</p>
+                        <p class="doc-card-body">
+                            Generative AI for Beginners
+                            by Aakriti E-Learning Academy
+                        </p>
+                        <span class="doc-view"><a href="https://www.udemy.com/certificate/UC-1112a9fd-b3d5-4683-8567-6f3a2bca9033/"><i class="fa-brands fa-google-drive"></i></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        `
+    }
+
+
+
+  });
+});
+
+// Flip Animation
+function startFlipAnimation() {
+  const words = [
+    "“Hello”",
+    "“やあ”",
+    "“Hola”",
+    "“Bonjour”",
+    "“नमस्ते”",
+    "“Ciao”",
+    "“مرحبا”",
+  ];
+  let index = 0;
+  const flipBox = document.querySelector(".flip-box");
+
+  if (!flipBox) return; // If .flip-box is not found, stop execution
+
+  function changeWord() {
+    // flipBox.classList.add("flipping"); // Start flip animation
+
+    setTimeout(() => {
+      index = (index + 1) % words.length; // Move to next word
+      flipBox.textContent = words[index]; // Change text mid-flip
+    }, 400); // Change text halfway through the animation
+
+    setTimeout(() => {
+    //   flipBox.classList.remove("flipping"); // Reset animation for next loop
+    }, 800);
+  }
+
+  setInterval(changeWord, 2000);
+}
+
+// Typed.js Animation
+function startTypingAnimation() {
+  var typed = new Typed("#role", {
+    strings: ["Backend Dev", "Web Dev", "ML Enthusiast", "Artist"],
+    typeSpeed: 60,
+    loop: true,
+    smartBackspace: false,
+    backSpeed: 60,
+    cursorChar: ".",
+  });
+}
+
+// --------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+  let slides = document.querySelectorAll(".slide");
+  let techIcons = document.querySelectorAll(".projectSkills i");
+  let currentIndex = 0;
+
+  function updateElements() {
+    slides = document.querySelectorAll(".slide");
+    techIcons = document.querySelectorAll(".projectSkills i");
+  }
+
+  function resetTechStack() {
+    techIcons.forEach((icon) => icon.classList.remove("colored")); // Remove 'colored' from all icons
+  }
+
+  function showSlide(index) {
+    updateElements(); // Refresh elements in case they were dynamically inserted
+
+    slides.forEach((slide) => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+
+    resetTechStack(); // Reset all tech stacks before updating
+
+    // Get tech stack from active slide
+    const activeTech = slides[index].dataset.tech.split(" ");
+
+    // Update tech icons
+    techIcons.forEach((icon) => {
+      if (activeTech.includes(icon.classList[1])) {
+        icon.classList.add("colored"); // Add 'colored' if relevant
+      }
+    });
+  }
+
+  // Detect when Project tab is opened
+  document.querySelector(".project").addEventListener("click", () => {
+    updateElements(); // Ensure elements exist
+    resetTechStack(); // Reset all tech stacks
+    showSlide(currentIndex); // Show the first slide correctly
+  });
+
+  document.addEventListener("click", (event) => {
+    updateElements(); // Ensure elements exist before handling clicks
+
+    if (event.target.closest("#next")) {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    } else if (event.target.closest("#prev")) {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+  });
+
+  // Initialize first slide with correct tech stack
+  resetTechStack();
+  showSlide(currentIndex);
+});
+

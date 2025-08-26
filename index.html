@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <link rel="stylesheet" href="index.css">
+    <title>RiDDhi | Developer</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <div class="name">PORT-FOLIO.</div>
+        </div>
+        <div class="accessibility">
+            <div class="upper">
+                <div class="portfolio">
+                    <div class="element"></div>
+                </div>
+                <div class="date_time">
+                    <div class="date"></div>
+                    <div class="time"></div>
+                </div>
+            </div>
+            <div class="lower">
+                <div class="left_nav">
+                    <div class="navBtn home selected">HOME</div>
+                    <div class="navBtn about">ABOUT</div>
+                    <div class="navBtn resume">RESUME</div>
+                    <div class="navBtn project">PROJECTS</div>
+                    <div class="navBtn contact">CONTACTS</div>
+                </div>
+                <div class="right_nav">
+                    <div class="navBtn docs">My Docs!</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+
+        <div id="home" class="homeContainer">
+            <div class="big1">Home</div>
+            <div class="inner">
+                <div class="homeLeft">
+                    <div class="flip-box">Hello</div>
+                    <div class="intro">I am Riddhi Dhara</div>
+                    <div class="role">
+                        <span id="role"></span>
+                    </div>
+                    <div class="descriptHome">
+                        I'm a passionate developer and aspiring Machine Learning Engineer, blending creativity and
+                        technology through gaming, sketching, and AI projects.
+                    </div>
+                </div>
+                <div class="homeRight">
+                    <div class="photo noselect">
+                        <div class="canvas">
+                            <div class="tracker tr-1"></div>
+                            <div class="tracker tr-2"></div>
+                            <div class="tracker tr-3"></div>
+                            <div class="tracker tr-4"></div>
+                            <div class="tracker tr-5"></div>
+                            <div class="tracker tr-6"></div>
+                            <div class="tracker tr-7"></div>
+                            <div class="tracker tr-8"></div>
+                            <div class="tracker tr-9"></div>
+                            <div class="tracker tr-10"></div>
+                            <div class="tracker tr-11"></div>
+                            <div class="tracker tr-12"></div>
+                            <div class="tracker tr-13"></div>
+                            <div class="tracker tr-14"></div>
+                            <div class="tracker tr-15"></div>
+                            <div class="tracker tr-16"></div>
+                            <div class="tracker tr-17"></div>
+                            <div class="tracker tr-18"></div>
+                            <div class="tracker tr-19"></div>
+                            <div class="tracker tr-20"></div>
+                            <div class="tracker tr-21"></div>
+                            <div class="tracker tr-22"></div>
+                            <div class="tracker tr-23"></div>
+                            <div class="tracker tr-24"></div>
+                            <div class="tracker tr-25"></div>
+                            <div id="card">
+                                <div class="myImg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="socials">
+        <div class="socialContainer close">
+            <a class="link" href="https://www.facebook.com/riddhi.dhara.73"><i class="fab fa-facebook-f"></i></a>
+            <a class="link" href="https://x.com/riddhidhara2003"><i class="fab fa-twitter"></i></a>
+            <a class="link" href="https://www.instagram.com/riddhidhara/?hl=en"><i class="fab fa-instagram"></i></a>
+            <a class="link" href="https://www.linkedin.com/in/riddhi-dhara-2003rd/"><i
+                    class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="socialBtn"><i class="fa-solid fa-share-nodes"></i></div>
+    </div>
+
+    <footer>
+        <div class="container close">
+            <div class="downloadCV">Download CV</div>
+            <div class="github"><a class="githubLink" href="https://github.com/RiddhiDhara"><i
+                        class="fa-brands fa-github"></i></a></div>
+        </div>
+        <div class="eye"><i class="fa-solid fa-eye-slash"></i></div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="email.js"></script>
+    <script>
+        var typed = new Typed('.element', {
+            strings: ['I am Riddhi Dhara', 'मैं ऋद्धि धारा हूँ।', '私はリッディ・ダラです。', '나는 리디 다라입니다.', 'Je suis Riddhi Dhara', 'Ich bin Riddhi Dhara', 'أنا ريدي دهارا', 'Soy Riddhi Dhara', 'Eu sou Riddhi Dhara', 'Я Риддхи Дхара'],
+            typeSpeed: 300,
+            loop: true,
+            smartBackspace: false,
+            backSpeed: 60,
+            cursorChar: '|',
+        });
+
+        setInterval(function () {
+            typed.start();
+        });
+    </script>
+
+    <script>
+        const words = ['“Hello”', '“やあ”', '“Hola”', '“Bonjour”', '“नमस्ते”', '“Ciao”', '“مرحبا”'];
+
+        let index = 0;
+        const flipBox = document.querySelector(".flip-box");
+
+        function changeWord() {
+            // flipBox.classList.add("flipping"); // Start flip animation
+
+            setTimeout(() => {
+                index = (index + 1) % words.length; // Move to next word
+                flipBox.textContent = words[index]; // Change text mid-flip
+            }, 600); // Change text halfway through the animation
+
+            setTimeout(() => {
+                flipBox.classList.remove("flipping"); // Reset animation for next loop
+            }, 1200);
+        }
+
+        setInterval(changeWord, 2000); // Change word every 2 seconds
+    </script>
+
+    <script>
+        var typed = new Typed('#role', {
+            strings: ['Backend Dev', 'Web Dev', 'ML Enthusiast', 'Artist'],
+            typeSpeed: 60,
+            loop: true,
+            smartBackspace: false,
+            backSpeed: 60,
+            cursorChar: ".",
+        });
+
+        setInterval(function () {
+            typed.start();
+        });
+    </script>
+
+</body>
+
+</html>
