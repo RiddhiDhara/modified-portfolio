@@ -1910,7 +1910,8 @@ footer {
     .aboutContainer,
     .resumeContainer,
     .projectContainer,
-    .contactContainer{
+    .contactContainer,
+    .docsContainer{
         padding: 0px;
     }
 
